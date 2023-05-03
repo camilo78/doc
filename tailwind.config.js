@@ -6,9 +6,18 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/views/vendor/pagination/*.blade.php",
     ],
 
     theme: {
+        pagination: theme => ({
+            color: theme('colors.purple.500'),
+            link: 'py-2 px-3 bg-white block border-t border-b',
+            wrapper: 'justify-start flex my-10',
+            item: 'block',
+            linkFirst: 'border-l border-r bg-gray-200 rounded-l-sm',
+            linkLast: 'border-r border-l bg-gray-200 rounded-r-sm'
+        }),
         extend: {
             boxShadow: {
                 DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
@@ -59,6 +68,7 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
+        require('tailwindcss-plugins/pagination'),
         require('@tailwindcss/typography'),
         // add custom variant for expanding sidebar
         plugin(({ addVariant, e }) => {

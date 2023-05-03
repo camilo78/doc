@@ -1,4 +1,3 @@
-
 <div class="relative" x-data="{ open: false, selected: 2 }">
     <button
         class="btn justify-between min-w-44 bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600"
