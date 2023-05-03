@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('position');
             $table->string('degree');
-            $table->bigInteger('created_by');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

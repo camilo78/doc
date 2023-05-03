@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('user_service', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->bigInteger('id_user');
-            $table->bigInteger('id_service');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_service')->references('id')->on('services')->onDelete('cascade');
+            $table->bigInteger('id_user')->unsigned();
+            $table->bigInteger('id_service')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_service')->references('id')->on('services');
             $table->timestamps();
         });
     }

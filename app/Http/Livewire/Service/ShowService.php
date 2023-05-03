@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Service;
 
 use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class ShowService extends Component
@@ -23,9 +24,12 @@ class ShowService extends Component
     {
 
         if ($this->readyToLoad) {
-            $services = Service::where('name', 'like', '%' . $this->search . '%')
-                ->orWhere('acronym', 'like', '%' . $this->search . '%')
-                ->orWhere('id_unit', 'like', '%' . $this->search . '%')
+
+            $services = DB::table('services')
+                ->select('services.id', 'services.name', 'services.acronym', 'units.name as unit')
+                ->join('units', 'units.id', '=', 'services.id_unit')
+                ->where('services.name', 'like', '%' . $this->search . '%')
+                ->orWhere('services.acronym', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sort, $this->direction)
                 ->paginate($this->cant);
         } else {

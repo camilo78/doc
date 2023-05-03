@@ -29,5 +29,15 @@ class UserSeeder extends Seeder
             'created_at'=> $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
             'updated_at'=> $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Antoniza Developer',
+            'email' => 'antoniza.developer@gmail.com',
+            'email_verified_at' => now(),
+            'status' => true,
+            'password' =>  Hash::make('lol123'),
+            'created_at'=> $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
+            'updated_at'=> $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
+        ]);
     }
 }

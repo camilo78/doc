@@ -17,8 +17,8 @@ return new class extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('acronym');
-            $table->bigInteger('id_unit');
-            $table->foreign('id_unit')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('id_unit')->unsigned();
+            $table->foreign('id_unit')->references('id')->on('units');
             $table->timestamps();
         });
     }
